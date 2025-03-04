@@ -5,6 +5,7 @@ import time
 import random
 import html
 from telebot import types
+import threading
 
 # Using your provided Telegram bot token and owner ID
 TELEGRAM_TOKEN = '7713586067:AAE7VVm-lQBUqWpguAY7BrkfO5Oj7aVSApM'
@@ -194,9 +195,20 @@ def cancel_attack(call):
     bot.edit_message_text("❌ <b>Attack Canceled</b>", call.message.chat.id, call.message.message_id, parse_mode="HTML")
 
 
-# Start the bot
+# Function to print messages every 60 seconds
+def periodic_print():
+    messages = [
+        "🌀 Bot is running smoothly...",
+        "💡 Remember to check logs for errors!",
+        "🚀 Your bot is alive and responding!",
+        "⚡ Keep an eye on performance metrics!"
+    ]
+    while True:
+        print(random.choice(messages))
+        time.sleep(60)
+
+# Start the periodic print function in a separate thread
+threading.Thread(target=periodic_print, daemon=True).start()
+
 print("Bot Is Running 🎉")
-while True:
-    print("Polling for updates... ⏳")
-    bot.infinity_polling(timeout=10, long_polling_timeout=5)
-    time.sleep(60)  # Print message every 60 seconds
+bot.infinity_polling()
