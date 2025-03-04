@@ -196,4 +196,7 @@ def cancel_attack(call):
 
 # Start the bot
 print("Bot Is Running 🎉")
-bot.infinity_polling()
+while True:
+    print("Polling for updates... ⏳")
+    bot.infinity_polling(timeout=10, long_polling_timeout=5)
+    time.sleep(60)  # Print message every 60 seconds
